@@ -4,6 +4,10 @@
 
   var jsT = {
 
+    defaults: {
+      measureRepeat: 100
+    },
+
     init: function() {
       console.clear();
       this.setGlobals();
@@ -22,10 +26,11 @@
       console.log.apply(console, arguments)
     },
 
-    measure: function(fnToTest, howMnyTimes) {
-      var start = performance.now();
+    measure: function(fnToTest, howManyTimes) {
+      var start = performance.now(),
+      howManyTimes = howManyTimes || this.defaults.measureRepeat;
 
-      for (var i = 0; i < howMnyTimes; i++) {
+      for (var i = 0; i < howManyTimes; i++) {
         fnToTest();
       }
 
